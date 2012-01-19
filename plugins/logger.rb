@@ -20,7 +20,7 @@ class Log
     $channels.each do |chan|
       self.check_folders_exist
       File.open("#{$logdir}/#{Time.now.strftime('%Y')}/#{Time.now.strftime('%m')}/#{Time.now.strftime('%d')}.log", "a+") do |file|
-        file.puts("[#{Time.now.localtime("+06:00").strftime("%m-%d-%Y %T")}] <#{m.user}> #{m.message}")
+        file.puts("[#{Time.now.localtime().strftime("%T")}] <#{m.user}> #{m.message}")
       end
     end
   end
