@@ -6,7 +6,7 @@ $channels = ["#tulsawebdevs"]
 
 bot = Cinch::Bot.new do
   configure do |c|
-    c.server = 'localhost'
+    c.server = 'irc.freenode.net'
     c.channels = $channels
     c.nick = "tulsabot"
     c.plugins.plugins = [Log, Plugins::Weather]
