@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 require 'cinch'
 
 class Hello
@@ -6,6 +7,7 @@ class Hello
   match "hello"
 
   def execute(m)
-    m.reply "Hello, #{m.user.nick}"
+    m.reply "こんにちは#{m.user.nick}お元気ですか。 "
+    puts('wasup')
   end
 end
