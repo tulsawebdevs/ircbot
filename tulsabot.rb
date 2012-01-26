@@ -9,7 +9,7 @@ bot = Cinch::Bot.new do
     c.server = 'irc.freenode.net'
     c.channels = $channels
     c.nick = "tulsabot"
-    c.plugins.plugins = [Karma, Log, Plugins::Weather]
+    c.plugins.plugins = [Botsnack, Karma, Log, Plugins::Weather]
   end
 end
 
