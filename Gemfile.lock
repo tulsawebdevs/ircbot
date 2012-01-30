@@ -10,6 +10,7 @@ GEM
     httparty (0.8.1)
       multi_json
       multi_xml
+    json (1.6.3)
     mime-types (1.16)
     multi_json (1.0.4)
     multi_xml (0.4.1)
@@ -25,4 +26,5 @@ DEPENDENCIES
   barometer
   chronic
   cinch
+  json
   rest-client
