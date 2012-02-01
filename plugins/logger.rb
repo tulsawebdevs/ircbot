@@ -6,21 +6,28 @@ class Log
 
   listen_to :channel
 
-  def check_folders_exist
-    if(!File.directory?("#{$logdir}/#{Time.now.strftime('%Y')}"))
-      Dir.mkdir("#{$logdir}/#{Time.now.strftime('%Y')}")
+  def check_folders_exist(now)
+    logs_by_year = "#{ $logdir }/#{ now.strftime("%Y") }"
+    if !File.directory?(logs_by_year)
+      Dir.mkdir(logs_by_year)
     end
 
-    if(!File.directory?("#{$logdir}/#{Time.now.strftime('%Y')}/#{Time.now.strftime('%m')}"))
-      Dir.mkdir("#{$logdir}/#{Time.now.strftime('%Y')}/#{Time.now.strftime('%m')}")
+    logs_by_month = "#{ $logdir }/#{ now.strftime("%Y/%m") }"
+    if !File.directory?(logs_by_month)
+      Dir.mkdir(logs_by_month)
     end
   end
 
   def listen(m)
     $channels.each do |chan|
-      self.check_folders_exist
-      File.open("#{$logdir}/#{Time.now.strftime('%Y')}/#{Time.now.strftime('%m')}/#{Time.now.strftime('%d')}.log", "a+") do |file|
-        file.puts("[#{Time.now.localtime().strftime("%T")}] <#{m.user}> #{m.message}")
+      # localtime for #tulsawebdevs is CST
+      now = Time.now.localtime("-06:00")
+
+      check_folders_exist(now)
+
+      filename = "#{ $logdir }/#{ now.strftime("%Y/%m/%d") }.log"
+      File.open(filename, "a") do |file|
+        file.puts("[#{ now.strftime("%T") }] <#{m.user}> #{m.message}")
       end
     end
   end
