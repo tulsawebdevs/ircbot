@@ -20,7 +20,8 @@ class Log
 
   def listen(m)
     $channels.each do |chan|
-      now = Time.now.localtime()
+      # localtime for #tulsawebdevs is CST
+      now = Time.now.localtime("-06:00")
 
       check_folders_exist(now)
 
