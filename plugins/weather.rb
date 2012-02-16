@@ -69,8 +69,18 @@ module Plugins
 
     end
 
-    match %r{weather (.+)}
+    match %r{weather (.+)}, method: :execute
     def execute (m, query = nil)
+      args = query != nil ? query.split(" ") : [nil, nil];
+      if args[-1] =~ /-\w/
+        m.reply current_weather!(:query => args[0..-2].join(" "), :modifier => args[-1]);
+      else
+        m.reply current_weather!(:query => args.join(" "));
+      end
+    end
+
+    match %r{weather}, method: :tulsa
+    def tulsa(m, query = 'tulsa')
       args = query != nil ? query.split(" ") : [nil, nil];
       if args[-1] =~ /-\w/
         m.reply current_weather!(:query => args[0..-2].join(" "), :modifier => args[-1]);
