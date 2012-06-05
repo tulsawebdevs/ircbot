@@ -1,0 +1,3 @@
+[submodule "plugins/karma"]
+	path = plugins/karma
+	url = git://github.com/zerokarmaleft/cinch-karma.git

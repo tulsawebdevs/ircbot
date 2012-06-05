@@ -1,5 +1,5 @@
 require 'cinch'
-Dir["./plugins/*.rb"].each {|file| require file }
+Dir["./plugins/*.rb", "./plugins/*/*.rb"].each {|file| require file }
 
 $logdir = ENV['IRC_LOGDIR']
 $channels = ["#tulsawebdevs"]
