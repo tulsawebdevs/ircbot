@@ -14,7 +14,7 @@ GEM
     json (1.6.3)
     mime-types (1.16)
     multi_json (1.0.4)
-    multi_xml (0.4.1)
+    multi_xml (0.6.0)
     nokogiri (1.5.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
